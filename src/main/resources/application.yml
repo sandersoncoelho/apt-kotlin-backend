@@ -1,0 +1,17 @@
+server:
+  port: 8080
+  servlet:
+    context-path: "/apt-backend"
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: "validate"
+  datasource:
+    url: "jdbc:mysql://localhost/apt?useTimezone=true&serverTimezone=UTC"
+    username: "root"
+    password: "adm@objective"
+  flyway:
+    locations: classpath:db/migration
+  profiles:
+    active: "develop"
