@@ -12,7 +12,8 @@ import javax.validation.Valid
 class ProductController(private val productService: ProductService) {
 
     @GetMapping
-    fun findAll(@RequestParam(value = "name") name: String? = null) = productService.findAll()
+    fun findAll(@RequestParam(value = "query") query: String?)
+            = productService.findAll(query ?: "")
 
     @GetMapping("/{id}")
     fun findById(@PathVariable(value = "id") id: Long): ResponseEntity<Product>

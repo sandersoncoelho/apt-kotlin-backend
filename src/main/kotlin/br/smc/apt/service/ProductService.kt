@@ -8,7 +8,7 @@ import java.lang.Exception
 @Service
 class ProductService(private val productRepository: ProductRepository) {
 
-    fun findAll(): List<Product> = productRepository.findAll()
+    fun findAll(query: String?): List<Product> = productRepository.findByNameContaining(query)
 
     fun findById(id: Long): Product = findByIdOrThrow(id)
 

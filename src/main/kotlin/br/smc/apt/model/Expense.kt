@@ -16,5 +16,5 @@ data class Expense(
     val name: String = "",
 
     @get: NotNull
-    val value: Float = 0F
+    val value: Int = 0
 )
