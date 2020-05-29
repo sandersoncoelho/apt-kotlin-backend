@@ -1,19 +1,34 @@
 package br.smc.apt.model
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import br.smc.apt.model.enums.Status
+import java.time.LocalDate
+import java.time.LocalDateTime
+import javax.persistence.*
 import javax.validation.constraints.NotNull
 
 @Entity
+@Table(name = "obra")
 data class Work(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0,
+    val id: Long,
 
     @get: NotNull
-    val name: String = "",
+    @Column(name = "nome")
+    val name: String,
 
-    val description: String? = null
+    @Column(name = "descricao")
+    val description: String,
+
+    @get: NotNull
+    @Column(name ="inicio")
+    val start: LocalDateTime,
+
+    @get: NotNull
+    @Column(name ="fim")
+    val end: LocalDateTime,
+
+    @get: NotNull
+    @Column(name ="status")
+    val status: Status
 )

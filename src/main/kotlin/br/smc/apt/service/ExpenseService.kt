@@ -1,19 +1,19 @@
 package br.smc.apt.service
 
-import br.smc.apt.model.Expense
+import br.smc.apt.model.MaterialExpense
 import br.smc.apt.repository.ExpenseRepository
 import org.springframework.stereotype.Service
 
 @Service
 class ExpenseService(private val expenseRepository: ExpenseRepository) {
 
-    fun findAll(): List<Expense> = expenseRepository.findAll()
+    fun findAll(): List<MaterialExpense> = expenseRepository.findAll()
 
-    fun findById(id: Long): Expense = findByIdOrThrow(id)
+    fun findById(id: Long): MaterialExpense = findByIdOrThrow(id)
 
-    fun save(product: Expense): Expense = expenseRepository.save(product)
+    fun save(product: MaterialExpense): MaterialExpense = expenseRepository.save(product)
 
-    fun update(id: Long, product: Expense): Expense {
+    fun update(id: Long, product: MaterialExpense): MaterialExpense {
         findByIdOrThrow(id)
         return expenseRepository.save(product)
     }
@@ -23,6 +23,6 @@ class ExpenseService(private val expenseRepository: ExpenseRepository) {
         expenseRepository.deleteById(id)
     }
 
-    private fun findByIdOrThrow(id: Long): Expense
+    private fun findByIdOrThrow(id: Long): MaterialExpense
             = expenseRepository.findById(id).orElseThrow{ Exception() }
 }
